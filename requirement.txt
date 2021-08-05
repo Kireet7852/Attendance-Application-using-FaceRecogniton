@@ -1,0 +1,8 @@
+Pillow
+tk
+ttkthemes
+PyQt5
+mysql-connector
+os
+opencv-python
+numpy
