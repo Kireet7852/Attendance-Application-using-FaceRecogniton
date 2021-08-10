@@ -12,6 +12,7 @@ from train import Train
 from face_recognition import Face_Recognition
 from attendance import Attendance
 from detail import Detail
+from showdetail import Showdetail
 
 
 
@@ -102,16 +103,16 @@ class Face_Recognition_System:
         b1_1 = Button(bg_img,text="Attendance",command=self.attendance_data,cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b1_1.place(x=700,y=250,width=200,height=40)
 
-        # #Help button
-        # img7 = Image.open(r"A:\PythonPorject\facerecog\Colleg_image\student.jpg")    
-        # img7 = img7.resize((500,130),Image.ANTIALIAS)
-        # self.photoimg7 = ImageTk.PhotoImage(img7)
+        #Show Detail
+        img7 = Image.open("Colleg_image/images.jpg")    
+        img7 = img7.resize((200,130),Image.ANTIALIAS)
+        self.photoimg7 = ImageTk.PhotoImage(img7)
         
-        # b1 = Button(bg_img,image=self.photoimg7,cursor="hand2")
-        # b1.place(x=1000,y=50,width=200,height=200)
+        b1 = Button(bg_img,image=self.photoimg7,command=self.show_data,cursor="hand2")
+        b1.place(x=1000,y=50,width=200,height=200)
 
-        # b1_1 = Button(bg_img,text="Help Desk",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
-        # b1_1.place(x=1000,y=250,width=200,height=40)
+        b1_1 = Button(bg_img,text="Show Detail",command=self.show_data,cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b1_1.place(x=1000,y=250,width=200,height=40)
 
         #Train button
         img8 = Image.open("Colleg_image/training.png")    
@@ -140,22 +141,23 @@ class Face_Recognition_System:
         img10 = img10.resize((200,200),Image.ANTIALIAS)
         self.photoimg10 = ImageTk.PhotoImage(img10)
         
-        b1 = Button(bg_img,image=self.photoimg10,command=self.detail,cursor="hand2")
+        b1 = Button(bg_img,image=self.photoimg10,command=self.detail_data,cursor="hand2")
         b1.place(x=700,y=310,width=200,height=200)
 
-        b1_1 = Button(bg_img,text="Details",command=self.detail,cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b1_1 = Button(bg_img,text="Details",command=self.detail_data,cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b1_1.place(x=700,y=510,width=200,height=40)
 
+ 
         #Exit button
         img11 = Image.open("Colleg_image/exit.jpg")    
         img11 = img11.resize((200,210),Image.ANTIALIAS)
         self.photoimg11 = ImageTk.PhotoImage(img11)
         
         b1 = Button(bg_img,image=self.photoimg11,command=self.exit,cursor="hand2")
-        b1.place(x=1000,y=200,width=200,height=200)
+        b1.place(x=1000,y=310,width=200,height=200)
 
         b1_1 = Button(bg_img,text="Exit",cursor="hand2",command=self.exit,font=("times new roman",15,"bold"),bg="darkblue",fg="white")
-        b1_1.place(x=1000,y=400,width=200,height=40)
+        b1_1.place(x=1000,y=510,width=200,height=40)
 
     def open_img(self):
         #os.startfile("data")
@@ -180,9 +182,14 @@ class Face_Recognition_System:
         self.new_window = Toplevel(self.root)
         self.app = Attendance(self.new_window)
 
-    def detail(self):
+    def detail_data(self):
         self.new_window = Toplevel(self.root)
-        self.app = Detail(self.new_window)
+        self.app = Detail(self.new_window)  
+
+
+    def show_data(self):
+        self.new_window = Toplevel(self.root)
+        self.app = Showdetail(self.new_window)
 
     def exit(self):
         self.exit=tkinter.messagebox.askyesno("Face Recognition","Are you sure exit this Project",parent=self.root)
