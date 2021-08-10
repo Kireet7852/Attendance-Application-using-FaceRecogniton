@@ -66,8 +66,8 @@ class Login(QDialog):
     def new_window(self):
         # self.new_window = Toplevel(Tk())
         # self.app = Face_Recognition_System(self.new_window)
-        self.close()
         subprocess.Popen(['Python','main.py'])
+        self.close(QtWidgets.qApp.quit)
         
     def gotocreate(self):
         createacc=CreateAcc()
